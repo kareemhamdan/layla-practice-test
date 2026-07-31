@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+2
+<html>
+3
+<head>
+4
+<meta charset="UTF-8">
+5
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+6
+ 
+7
+<title>Layla's Assessment</title>
+8
+ 
+9
+<style>
+10
+body{
+11
+font-family: Arial, sans-serif;
+12
+background:#ffe6ee;
+13
+display:flex;
+14
+justify-content:center;
+15
+align-items:center;
+16
+height:100vh;
+17
+margin:0;
+18
+}
+19
+ 
+20
+.card{
+21
+background:white;
+22
+padding:40px;
+23
+max-width:600px;
+24
+border-radius:20px;
+25
+text-align:center;
+26
+box-shadow:0 10px 30px rgba(0,0,0,.1);
+27
+}
+28
+ 
+29
+button{
+30
+background:#ff4d88;
+31
+color:white;
+32
+border:none;
+33
+padding:15px 25px;
+34
+border-radius:10px;
+35
+font-size:18px;
+36
+cursor:pointer;
+37
+}
+38
+ 
+39
+button:hover{
+40
+opacity:.9;
+41
+}
+42
+</style>
+43
+</head>
+44
+ 
+45
+<body>
+46
+ 
+47
+<div class="card">
+48
+<h1>❤️ Welcome, Layla.</h1>
+49
+ 
+50
+<p>Kareem is attempting to plan a date.</p>
+51
+ 
+52
+<p>
+53
+Please assist in diagnosing your ideal day so the
+54
+appropriate treatment plan can be developed.
+55
+</p>
+56
+ 
+57
+<hr>
+58
+ 
+59
+<p><strong>Expected Outcome</strong></p>
+60
+ 
+61
+<p>✓ Good food</p>
+62
+<p>✓ Good company</p>
+63
+<p>✓ A break from CRNA school</p>
+64
+<p>✓ Minimal exposure to Houston</p>
+65
+ 
+66
+<br>
+67
+ 
+68
+<button onclick="startAssessment()">
+69
+Begin Assessment
+70
+</button>
+71
+ 
+72
+</div>
+73
+ 
+74
+<script>
+75
+ 
+76
+function startAssessment(){
+77
+ 
+78
+const messages = [
+79
+ 
+80
+"Reviewing clinical data...",
+81
+ 
+82
+"Sending information to local database...",
+83
+ 
+84
+"Consulting Beaumont hospitals for further assessment...",
+85
+ 
+86
+"Administering therapeutic matcha...",
+87
+ 
+88
+"Verifying Houston avoidance preferences...",
+89
+ 
+90
+"Checking whether country is a diagnosable condition...",
+91
+ 
+92
+"Generating treatment plan..."
+93
+ 
+94
+];
+95
+ 
+96
+let i = 0;
+97
+ 
+98
+document.querySelector(".card").innerHTML = `
+99
+<h2 id="loading"></h2>
+100
+`;
+101
+ 
+102
+let interval = setInterval(()=>{
+103
+ 
+104
+document.getElementById("loading").innerText =
+105
+messages[i];
+106
+ 
+107
+i++;
+108
+ 
+109
+if(i >= messages.length){
+110
+ 
+111
+clearInterval(interval);
+112
+ 
+113
+setTimeout(()=>{
+114
+ 
+115
+document.querySelector(".card").innerHTML = `
+116
+<h1>Chief Complaint</h1>
+117
+ 
+118
+<p>What are you currently in need of most?</p>
+119
+ 
+120
+<label>
+121
+<input type="checkbox"> Good food
+122
+</label><br><br>
+123
+ 
+124
+<label>
+125
+<input type="checkbox"> Fresh air
+126
+</label><br><br>
+127
+ 
+128
+<label>
+129
+<input type="checkbox"> Matcha
+130
+</label><br><br>
+131
+ 
+132
+<label>
+133
+<input type="checkbox"> A break from studying
+134
+</label><br><br>
+135
+ 
+136
+<label>
+137
+<input type="checkbox"> Adventure
+138
+</label>
+139
+`;
+140
+ 
+141
+},1000);
+142
+ 
+143
+}
+144
+ 
+145
+},1500);
+146
+ 
+147
+}
+148
+</script>
+149
+ 
+150
+</body>
+151
+</html>
