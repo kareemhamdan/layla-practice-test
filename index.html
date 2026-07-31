@@ -159,9 +159,12 @@ card.innerHTML = `
 <label><input type="checkbox"> A break from studying</label><br><br>
 
 <label><input type="checkbox"> Adventure</label>
+<br><br>
 
+<button onclick= "showScheduling()">
+Next →
+</button>
 `;
-
 }, 1000);
 
 }
@@ -169,7 +172,67 @@ card.innerHTML = `
 }, 1500);
 
 }
+function showScheduling() {
 
+document.getElementById("card").innerHTML = `
+
+<h2>Scheduling Assessment</h2>
+
+<p>
+
+When can Kareem steal a few hours of your time?
+
+</p>
+
+<label>
+
+<input type="radio" name="day">
+
+Friday
+
+</label>
+
+<br><br>
+
+<label>
+
+<input type="radio" name="day">
+
+Saturday
+
+</label>
+
+<br><br>
+
+<label>
+
+<input type="radio" name="day">
+
+Sunday
+
+</label>
+
+<br><br>
+
+<label>
+
+<input type="radio" name="day">
+
+Next available appointment
+
+</label>
+
+<br><br>
+
+<button>
+
+Next →
+
+</button>
+
+`;
+
+}
 </script>
 
 </body>
