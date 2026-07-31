@@ -8,294 +8,244 @@
 5
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 6
- 
+<title>Layla Assessment</title>
 7
-<title>Layla's Assessment</title>
+ 
 8
- 
-9
 <style>
+9
+body {
 10
-body{
-11
 font-family: Arial, sans-serif;
+11
+background: #ffe6ee;
 12
-background:#ffe6ee;
+display: flex;
 13
-display:flex;
+justify-content: center;
 14
-justify-content:center;
+align-items: center;
 15
-align-items:center;
+height: 100vh;
 16
-height:100vh;
+margin: 0;
 17
-margin:0;
+}
 18
-}
+ 
 19
- 
+.card {
 20
-.card{
+background: white;
 21
-background:white;
+padding: 40px;
 22
-padding:40px;
+max-width: 600px;
 23
-max-width:600px;
+border-radius: 20px;
 24
-border-radius:20px;
+text-align: center;
 25
-text-align:center;
+box-shadow: 0 10px 25px rgba(0,0,0,.1);
 26
-box-shadow:0 10px 30px rgba(0,0,0,.1);
+}
 27
-}
+ 
 28
- 
+button {
 29
-button{
+background: #ff4d88;
 30
-background:#ff4d88;
+color: white;
 31
-color:white;
+border: none;
 32
-border:none;
+padding: 12px 24px;
 33
-padding:15px 25px;
+border-radius: 10px;
 34
-border-radius:10px;
+cursor: pointer;
 35
-font-size:18px;
+font-size: 16px;
 36
-cursor:pointer;
+}
 37
-}
-38
- 
-39
-button:hover{
-40
-opacity:.9;
-41
-}
-42
 </style>
-43
+38
 </head>
-44
+39
  
-45
+40
 <body>
-46
+41
  
-47
-<div class="card">
-48
+42
+<div class="card" id="card">
+43
+ 
+44
 <h1>❤️ Welcome, Layla.</h1>
-49
+45
  
-50
+46
 <p>Kareem is attempting to plan a date.</p>
-51
+47
  
-52
+48
 <p>
-53
+49
 Please assist in diagnosing your ideal day so the
-54
+50
 appropriate treatment plan can be developed.
-55
+51
 </p>
-56
+52
  
-57
-<hr>
-58
- 
-59
+53
 <p><strong>Expected Outcome</strong></p>
-60
+54
  
-61
+55
 <p>✓ Good food</p>
-62
+56
 <p>✓ Good company</p>
-63
+57
 <p>✓ A break from CRNA school</p>
-64
+58
 <p>✓ Minimal exposure to Houston</p>
+59
+ 
+60
+<button onclick="startAssessment()">
+61
+Begin Assessment
+62
+</button>
+63
+ 
+64
+</div>
 65
  
 66
-<br>
+<script>
 67
  
 68
-<button onclick="startAssessment()">
+function startAssessment() {
 69
-Begin Assessment
+ 
 70
-</button>
+var messages = [
 71
- 
+"Reviewing clinical data...",
 72
-</div>
+"Sending information to local database...",
 73
- 
+"Consulting Beaumont hospitals for further assessment...",
 74
-<script>
+"Administering therapeutic matcha...",
 75
- 
+"Verifying Houston avoidance preferences...",
 76
-function startAssessment(){
+"Checking whether country is a diagnosable condition...",
 77
- 
+"Generating treatment plan..."
 78
-const messages = [
+];
 79
  
 80
-"Reviewing clinical data...",
+var card = document.getElementById("card");
 81
  
 82
-"Sending information to local database...",
+card.innerHTML = "<h2 id='loading'>Loading...</h2>";
 83
  
 84
-"Consulting Beaumont hospitals for further assessment...",
+var i = 0;
 85
  
 86
-"Administering therapeutic matcha...",
+var interval = setInterval(function() {
 87
  
 88
-"Verifying Houston avoidance preferences...",
+document.getElementById("loading").innerText =
 89
- 
+messages[i];
 90
-"Checking whether country is a diagnosable condition...",
+ 
 91
- 
+i++;
 92
-"Generating treatment plan..."
+ 
 93
- 
+if (i >= messages.length) {
 94
-];
+ 
 95
- 
+clearInterval(interval);
 96
-let i = 0;
-97
  
+97
+setTimeout(function() {
 98
-document.querySelector(".card").innerHTML = `
+ 
 99
-<h2 id="loading"></h2>
+card.innerHTML = `
 100
-`;
+<h2>Chief Complaint</h2>
 101
  
 102
-let interval = setInterval(()=>{
+<p>What are you currently in need of most?</p>
 103
  
 104
-document.getElementById("loading").innerText =
+<label><input type="checkbox"> Good food</label><br><br>
 105
-messages[i];
+ 
 106
- 
+<label><input type="checkbox"> Fresh air</label><br><br>
 107
-i++;
+ 
 108
- 
+<label><input type="checkbox"> Matcha</label><br><br>
 109
-if(i >= messages.length){
+ 
 110
- 
+<label><input type="checkbox"> A break from studying</label><br><br>
 111
-clearInterval(interval);
+ 
 112
- 
+<label><input type="checkbox"> Adventure</label>
 113
-setTimeout(()=>{
-114
  
+114
+`;
 115
-document.querySelector(".card").innerHTML = `
+ 
 116
-<h1>Chief Complaint</h1>
+}, 1000);
 117
  
 118
-<p>What are you currently in need of most?</p>
+}
 119
  
 120
-<label>
+}, 1500);
 121
-<input type="checkbox"> Good food
+}
 122
-</label><br><br>
+ 
 123
- 
-124
-<label>
-125
-<input type="checkbox"> Fresh air
-126
-</label><br><br>
-127
- 
-128
-<label>
-129
-<input type="checkbox"> Matcha
-130
-</label><br><br>
-131
- 
-132
-<label>
-133
-<input type="checkbox"> A break from studying
-134
-</label><br><br>
-135
- 
-136
-<label>
-137
-<input type="checkbox"> Adventure
-138
-</label>
-139
-`;
-140
- 
-141
-},1000);
-142
- 
-143
-}
-144
- 
-145
-},1500);
-146
- 
-147
-}
-148
 </script>
-149
+124
  
-150
+125
 </body>
-151
+126
 </html>
