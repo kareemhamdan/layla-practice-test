@@ -1,673 +1,512 @@
 HTML
-1
+
 <!DOCTYPE html>
-2
+
 <html>
-3
+
 <head>
-4
+
 <meta charset="UTF-8">
-5
+
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-6
+
  
-7
+
 <title>Layla Assessment</title>
-8
- 
-9
+
 <style>
-10
- 
-11
+
 body{
-12
+
 font-family: Arial, sans-serif;
-13
+
 background:#ffe6ee;
-14
+
 display:flex;
-15
+
 justify-content:center;
-16
+
 align-items:center;
-17
+
 height:100vh;
-18
+
 margin:0;
-19
+
 }
-20
- 
-21
+
+
 .card{
-22
+
 background:white;
-23
+
 padding:40px;
-24
+
 max-width:600px;
-25
+
 width:90%;
-26
+
 border-radius:20px;
-27
+
 text-align:center;
-28
+
 box-shadow:0 10px 25px rgba(0,0,0,.1);
-29
+
 }
-30
+
  
-31
+
 button{
-32
+
 background:#ff4d88;
-33
+
 color:white;
-34
+
 border:none;
-35
+
 padding:12px 24px;
-36
+
 border-radius:10px;
-37
+
 cursor:pointer;
-38
+
 font-size:16px;
-39
+
 }
-40
+
  
-41
+
 button:hover{
-42
+
 opacity:.9;
-43
+
 }
-44
- 
-45
+
+
 .progress-container{
-46
+
 width:100%;
-47
+
 background:#f1f1f1;
-48
+
 border-radius:20px;
-49
+
 margin-bottom:20px;
-50
+
 }
-51
- 
-52
+
+
 .progress-bar{
-53
+
 height:14px;
-54
+
 background:#ff4d88;
-55
+
 border-radius:20px;
-56
+
 transition:.5s;
-57
+
 }
-58
+
  
-59
+
 .step-text{
-60
+
 font-size:14px;
-61
+
 color:#666;
-62
+
 margin-bottom:10px;
-63
+
 }
-64
+
  
-65
+
 textarea{
-66
+
 width:90%;
-67
+
 padding:10px;
-68
+
 border-radius:10px;
-69
+
 border:1px solid #ccc;
-70
+
 }
-71
+
  
-72
+
 </style>
-73
+
 </head>
-74
+
  
-75
+
 <body>
-76
+
  
-77
+
 <div class="card" id="card">
-78
+
  
-79
+
 <h1>❤️ Welcome, Layla.</h1>
-80
+
  
-81
+
 <p>Kareem is attempting to plan a date.</p>
-82
- 
-83
+
 <p>
-84
+
 Please assist in diagnosing your ideal day so the
-85
+
 appropriate treatment plan can be developed.
-86
+
 </p>
-87
+
  
-88
+
 <p><strong>Expected Outcome</strong></p>
-89
+
  
-90
+
 <p>✓ Increase laughter</p>
-91
+
 <p>✓ Continue the Houston debate</p>
-92
+
 <p>✓ A break from CRNA school</p>
-93
+
 <p>✓ Have a good time</p>
-94
+
  
-95
+
 <button onclick="startAssessment()">
-96
+
 Begin Assessment
-97
+
 </button>
-98
- 
-99
+
+
 </div>
-100
+
  
-101
+
 <script>
-102
- 
-103
+
+
 function getProgress(step,total){
-104
- 
-105
+
 let percent = (step/total)*100;
-106
- 
-107
+
 return `
-108
+
 <div class="step-text">
-109
+
 Step ${step} of ${total}
-110
+
 </div>
-111
- 
-112
+
 <div class="progress-container">
-113
+
 <div class="progress-bar" style="width:${percent}%"></div>
-114
+
 </div>
-115
+
 `;
-116
- 
-117
+
+
 }
-118
+
  
-119
+
 function startAssessment(){
-120
- 
-121
+
+
 var messages = [
-122
- 
-123
+
 "Reviewing local crime reports...",
-124
- 
-125
+
 "Sending information to local database...",
-126
- 
-127
+
 "Consulting Beaumont hospitals for further assessment...",
-128
- 
-129
+
 "Checking local rail schedule...",
-130
- 
-131
+
 "Verifying proper attire...",
-132
- 
-133
+
 "Determining optimal sushi dosage...",
-134
- 
-135
+
 "Administering therapeutic matcha...",
-136
- 
-137
+
 "Reviewing Houston avoidance protocols...",
-138
- 
-139
+
 "Checking if country is a diagnosable condition...",
-140
- 
-141
+
 "Generating treatment plan..."
-142
- 
-143
+
 ];
-144
- 
-145
+
 var card = document.getElementById("card");
-146
- 
-147
+
 card.innerHTML = "<h2 id='loading'>Loading...</h2>";
-148
- 
-149
+
 var i = 0;
-150
- 
-151
+
 var interval = setInterval(function(){
-152
- 
-153
+
 document.getElementById("loading").innerText =
-154
+
 messages[i];
-155
- 
-156
 i++;
-157
- 
-158
+
+
 if(i >= messages.length){
-159
+
  
-160
+
 clearInterval(interval);
-161
- 
-162
+
 setTimeout(function(){
-163
- 
-164
+
 showChiefComplaint();
-165
- 
-166
+
 },1000);
-167
- 
-168
+
 }
-169
- 
-170
+
 },1500);
-171
- 
-172
+
 }
-173
- 
-174
+
 function showChiefComplaint(){
-175
- 
-176
+
 document.getElementById("card").innerHTML = `
-177
- 
-178
+
 ${getProgress(1,6)}
-179
- 
-180
+
 <h2>Chief Complaint</h2>
-181
- 
-182
+
+
 <p>What are you currently in need of most?</p>
-183
- 
-184
+
 <label><input type="checkbox"> Good food</label>
-185
+
 <br><br>
-186
+
  
-187
+
 <label><input type="checkbox"> Physical Activity</label>
-188
+
 <br><br>
-189
+
  
-190
+
 <label><input type="checkbox"> A Good Surprise</label>
-191
+
 <br><br>
-192
+
  
-193
+
 <label><input type="checkbox"> A break from studying</label>
-194
+
 <br><br>
-195
+
  
-196
+
 <label><input type="checkbox"> Adventure</label>
-197
+
  
-198
+
 <br><br>
-199
+
  
-200
+
 <button onclick="showScheduling()">
-201
+
 Next →
-202
+
 </button>
-203
+
  
-204
+
 `;
-205
- 
-206
+
 }
-207
+
  
-208
+
 function showScheduling(){
-209
+
  
-210
+
 document.getElementById("card").innerHTML = `
-211
+
  
-212
+
 ${getProgress(2,6)}
-213
- 
-214
+
 <h2>Scheduling Assessment</h2>
-215
- 
-216
+
 <p>When can Kareem steal a few hours of your time?</p>
-217
- 
-218
+
 <label>
-219
+
 <input type="radio" name="day">
-220
+
 Friday
-221
+
 </label>
-222
- 
-223
+
 <br><br>
-224
+
  
-225
+
 <label>
-226
+
 <input type="radio" name="day">
-227
+
 Saturday
-228
+
 </label>
-229
- 
-230
+
 <br><br>
-231
- 
-232
+
 <label>
-233
+
 <input type="radio" name="day">
-234
+
 Sunday
-235
+
 </label>
-236
- 
-237
+
 <br><br>
-238
- 
-239
+
 <label>
-240
+
 <input type="radio" name="day">
-241
+
 Next Available Appointment
-242
+
 </label>
-243
- 
-244
+
 <br><br>
-245
- 
-246
+
 <button onclick="showFood()">
-247
+
 Next →
-248
+
 </button>
-249
+
  
-250
+
 `;
-251
- 
-252
+
 }
-253
- 
-254
+
 function showFood(){
-255
- 
-256
+
 document.getElementById("card").innerHTML = `
-257
- 
-258
+
 ${getProgress(3,6)}
-259
- 
-260
+
 <h2>Nutritional Consultation</h2>
-261
- 
-262
+
 <p>Select all treatments that sound appealing.</p>
-263
- 
-264
+
 <label><input type="checkbox"> Sushi 🍣</label>
-265
+
 <br><br>
-266
- 
-267
+
 <label><input type="checkbox"> Thai 🍜</label>
-268
+
 <br><br>
-269
- 
-270
+
 <label><input type="checkbox"> Mediterranean 🥙</label>
-271
+
 <br><br>
-272
+
  
-273
+
 <label><input type="checkbox"> Persian 🍢</label>
-274
+
 <br><br>
-275
- 
-276
+
 <label><input type="checkbox"> Matcha 🍵</label>
-277
- 
-278
+
 <br><br>
-279
+
  
-280
+
 <button onclick="showActivities()">
-281
+
 Next →
-282
+
 </button>
-283
- 
-284
+
 `;
-285
- 
-286
+
 }
-287
- 
-288
+
 function showActivities(){
-289
- 
-290
+
 document.getElementById("card").innerHTML = `
-291
- 
-292
+
 ${getProgress(4,6)}
-293
- 
-294
+
 <h2>Activity Assessment</h2>
-295
- 
-296
+
 <p>Which activities would improve your condition?</p>
-297
- 
-298
+
 <label><input type="checkbox"> Rock Climbing 🧗</label>
-299
+
 <br><br>
-300
- 
-301
+
 <label><input type="checkbox"> Painting 🎨</label>
-302
+
 <br><br>
-303
- 
-304
+
 <label><input type="checkbox"> Running 🏃</label>
-305
+
 <br><br>
-306
- 
-307
+
 <label><input type="checkbox"> Matcha Date 🍵</label>
-308
+
 <br><br>
-309
- 
-310
+
 <label><input type="checkbox"> Sunset Walk 🌅</label>
-311
+
 <br><br>
-312
- 
-313
+
+
 <label><input type="checkbox"> Explore Somewhere New 🚗</label>
-314
- 
-315
+
 <br><br>
-316
- 
-317
+
 <button onclick="showNotes()">
-318
+
 Next →
-319
+
 </button>
-320
- 
-321
+
 `;
-322
- 
-323
+
 }
-324
- 
-325
+
 function showNotes(){
-326
- 
-327
+
 document.getElementById("card").innerHTML = `
-328
- 
-329
+
 ${getProgress(5,6)}
-330
+
  
-331
+
 <h2>Provider Notes</h2>
-332
+
  
-333
+
 <p>
-334
+
 A perfect day together would include...
-335
+
 </p>
 
 <textarea rows="5"></textarea>
